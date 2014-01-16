@@ -1,0 +1,10 @@
+'use strict';
+
+angular.module('newsApp.services')
+	.service('wtfServ', function(){
+		function WtfServ(){
+			this.temp = [];
+		}
+
+		return new WtfServ();
+	});

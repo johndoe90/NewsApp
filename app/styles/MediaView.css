@@ -1,0 +1,49 @@
+#media-view,
+#media-view-frame{
+	width: 100%;
+	height: 100%;
+    display: block;
+}
+
+#media-view-spinner{
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	top: 50%;
+	top: calc(50% - 32px);
+	left: 50%;
+	left: calc(50% - 32px);
+	background-image: url('/images/spinner.png');
+	-webkit-animation: play .8s steps(12) infinite;
+    -moz-animation: play .8s steps(12) infinite;
+    -ms-animation: play .8s steps(12) infinite;
+    -o-animation: play .8s steps(12) infinite;
+    animation: play .8s steps(12) infinite;
+
+    z-index: 1000;
+}
+
+@-webkit-keyframes play {
+    from { background-position:    0px; }
+    to { background-position: -384px; }
+}
+
+@-moz-keyframes play {
+    from { background-position:    0px; }
+    to { background-position: -384px; }
+}
+
+@-ms-keyframes play {
+    from { background-position:    0px; }
+    to { background-position: -384px; }
+}
+
+@-o-keyframes play {
+    from { background-position:    0px; }
+    to { background-position: -384px; }
+}
+
+@keyframes play {
+    from { background-position:    0px; }
+    to { background-position: -384px; }
+}
