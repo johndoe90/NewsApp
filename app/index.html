@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html ng-app="newsApp" class="no-js"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="newsApp" ng-controller="mainCtrl">
+  <body ng-controller="mainCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -33,7 +33,7 @@
 			}, false);
 		</script>
 
-    <div ui-view></div>      
+    <div class="fp" ui-view></div>      
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -51,7 +51,9 @@
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
+    <script src="cordova.js"></script>
     <script src="bower_components/jquery/jquery.js"></script>
+
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -61,6 +63,7 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
 		<script src="bower_components/ionic/ionic.js"></script>
+        <script src="bower_components/angular-bindonce/bindonce.js"></script>
 		<script src="bower_components/angular-animate/angular-animate.js"></script>
 		<script src="bower_components/angular-route/angular-route.js"></script>
 		<script src="bower_components/angular-touch/angular-touch.js"></script>
@@ -82,53 +85,41 @@
     <script src="scripts/services/Wtf.js"></script>
     <script src="scripts/services/Utilities.js"></script>
     <script src="scripts/services/Threads.js"></script>
+    <script src="scripts/services/Cordova.js"></script>
 		
 		<!-- CONTROLLERS -->
     <script src="scripts/controllers/MenuCtrl.js"></script>
     <script src="scripts/controllers/MainCtrl.js"></script>
-		<script src="scripts/controllers/MediaCtrl.js"></script>
+	<script src="scripts/controllers/MediaCtrl.js"></script>
     <script src="scripts/controllers/TestController.js"></script>
     <script src="scripts/controllers/ThreadCtrl.js"></script>
+    <script src="scripts/controllers/ViewCtrl.js"></script>
+    <script src="scripts/controllers/SettingsCtrl.js"></script>
 
 		<!-- DIRECTIVES -->
-		<script src="scripts/directives/MediaViewDirective.js"></script>
+	<script src="scripts/directives/MediaViewDirective.js"></script>
     <script src="scripts/directives/MediaDir.js"></script>
     <script src="scripts/directives/MediumDir.js"></script>
     <script src="scripts/directives/ThreadDir.js"></script>
+    <script src="scripts/directives/ViewDir.js"></script>
+    <script src="scripts/directives/CordovaTickDir.js"></script>
+    <script src="scripts/directives/PrimaryView.js"></script>
+    <script src="scripts/directives/ModalView.js"></script>
+    <script src="scripts/directives/CategoriesDir.js"></script>
 
     <!-- FILTERS -->
     <script src="scripts/filters/MediaFltr.js"></script>
     <script src="scripts/filters/MediaDateFltr.js"></script>
     <script src="scripts/filters/MediaCategoryFltr.js"></script>
     <script src="scripts/filters/MediumBackgroundFltr.js"></script>
+    <script src="scripts/filters/InFltr.js"></script>
 
-        <!-- endbuild -->
 
-		<script src="cordova.js"></script>
-        <script>
-            var app = {
-							initialize: function() {
-									this.bindEvents();
-							},
-							bindEvents: function() {
-									document.addEventListener('deviceready', this.onDeviceReady, false);
-							},
-							onDeviceReady: function() {
-									app.receivedEvent('deviceready');
-							},
-							receivedEvent: function(id) {
-									var parentElement = document.getElementById(id);
-									var listeningElement = parentElement.querySelector('.listening');
-									var receivedElement = parentElement.querySelector('.received');
+    <script src="scripts/InitializeCordova.js"></script>
+    <!-- endbuild -->
 
-									listeningElement.setAttribute('style', 'display:none;');
-									receivedElement.setAttribute('style', 'display:block;');
 
-									console.log('Received Event: ' + id);
-							}
-					};
-
-					app.initialize();
-        </script>
+	<!--<script src="cordova.js"></script>-->
+    <!--<script src="scripts/InitializeCordova.js"></script>-->
 </body>
 </html>

@@ -1,8 +1,7 @@
-<view title="'Threads'" hide-back-button="true" left-buttons="leftButtons">
-	<content has-header="true" padding="false" on-infinite-scroll="load" on-refresh="refresh()">
+<view id="navigation-threads" title="thread.name" hide-back-button="true" left-buttons="leftButtons" right-buttons="rightButtons">
+	<content has-header="true" padding="false" on-infinite-scroll="load" on-refresh="refresh()" overflow-scroll="false">
 		<pf-thread>
-			<pf-media media="thread.media" consume="consume"></pf-media>
-			<!--<pf-media-view></pf-media-view>-->
+			<pf-media media="thread.media" consume="consume" display="display"></pf-media>
 		</pf-thread>
 	</content>
 </view>

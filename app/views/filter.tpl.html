@@ -1,0 +1,28 @@
+<div class="modal">
+	<header class="bar bar-header bar-positive">
+		<button pf-tick class="button button-clear icon ion-chevron-left" ng-click="closeModal()"></button>
+		<h1 class="title">Edit Filter</h1>
+	</header>
+	<content has-header="true" padding="true">		
+		<ul class="list">
+			<li class="item item-divider">Name</li>
+			<li class="item item-input">
+				<input type="text" placeholder="Name" ng-model="thread.name" >
+			</li>
+			<li class="item item-divider">Quellen</li>
+			<li class="item item-checkbox" ng-repeat="mediaProvider in mediaProviders">
+				<label class="checkbox">
+					<input type="checkbox" ng-model="includeMediaProvider" ng-init="includeMediaProvider = (mediaProvider.id | in : thread.filter.mediaProviders)" ng-change="toggleMediaProvider($index)">
+				</label>
+				{{mediaProvider.mediaProviderName}}
+			</li>
+			<li class="item item-divider">Kategorien</li>
+			<li class="item item-checkbox" ng-repeat="category in categories">
+				<label class="checkbox">
+					<input type="checkbox" ng-model="includeCategory" ng-init="includeCategory = (category.id | in : thread.filter.categories)" ng-change="toggleCategory($index)">
+				</label>
+				{{category.name}}
+			</li>
+		</ul>
+	</content>
+</div>

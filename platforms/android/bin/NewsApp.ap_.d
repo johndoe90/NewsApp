@@ -36,10 +36,15 @@
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/index.html \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/threads.tpl.html \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/medium.tpl.html \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/presentation.tpl.html \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/favourites.tpl.html \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/filter.tpl.html \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/media-view.tpl.html \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/view2.tpl.html \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/media.tpl.html \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/app.tpl.html \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/help.html \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/view.tpl.html \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/settings.tpl.html \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/views/navigation.tpl.html \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen \
@@ -51,9 +56,9 @@
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/fonts/ionicons.woff \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/fonts/ionicons.svg \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/fonts/ionicons.ttf \
-/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/styles/7c8b0009.main.css \
-/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/scripts/88d6b482.vendor.js \
-/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/scripts/5320e690.scripts.js \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/styles/d9f6183a.main.css \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/scripts/3358711e.vendor.js \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/scripts/4472d9e2.scripts.js \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/jquery \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/angular-sanitize \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/angular-touch \
@@ -63,6 +68,7 @@
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/angular-animate \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/es5-shim \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/ionic \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/angular-bindonce \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/json3 \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/angular-mocks \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/jquery/README.md \
@@ -142,6 +148,10 @@
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/ionic/angular-ui-router.js \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/ionic/ionic.js \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/ionic/ionic.css \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/angular-bindonce/README.md \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/angular-bindonce/LICENSE \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/angular-bindonce/bindonce.js \
+/home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/angular-bindonce/bower.json \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/json3/README.md \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/json3/LICENSE \
 /home/johndoe/Dokumente/SoftwareDevelopment/Javascript/News/platforms/android/assets/www/bower_components/json3/bower.json \

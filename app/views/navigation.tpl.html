@@ -1,25 +1,2 @@
-<side-menus>
-  <div ng-controller="menuCtrl">
-    <pane side-menu-content drag-content="false">
-      <nav-bar animation="nav-title-slide-ios7" type="bar-positive" back-button-type="button-icon" back-button-icon="ion-arrow-left-c"></nav-bar>
-
-      <nav-view animation="slide-left-right"></nav-view>
-    </pane>
-    <side-menu side="left">
-      <div class="list">
-        <a class="item item-icon-left" ui-sref="navigation.settings">
-          <i class="icon ion-gear-b"></i>
-          Einstellungen
-        </a>
-        <a class="item item-icon-left" href="#/help">
-          <i class="icon ion-information"></i>
-          Hilfe
-        </a>
-        <a class="item item-icon-left" href="#/favourites">
-          <i class="icon ion-android-star"></i>
-          Favoriten
-        </a>
-      </div>
-    </side-menu>
-  </div>
-</side-menus>
+<div class="fp" ui-view></div>
+<!--<nav-view animation="slide-left-right"></nav-view>-->

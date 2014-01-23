@@ -1,7 +1,11 @@
-<div id="pf-media">
-	<refresher></refresher>
-	<ul class="list">
-		<li pf-medium class="item" style="padding: 0;" ng-repeat="medium in media" medium="medium" consume="consume" index="{{$index}}"></li>
-	</ul>
-	<infinite-scroll></infinite-scroll>
-</div>
+
+	<div id="pf-media">
+		<!--<div ng-if="display">-->
+		<refresher></refresher>
+		
+		<ul class="list card">
+			<li pf-medium class="item" ng-repeat="medium in media" medium="medium" consume="consume" style="margin-bottom: 7px;"></li>
+		</ul>
+
+		<infinite-scroll></infinite-scroll>
+	</div>

@@ -1,14 +1,21 @@
 'use strict';
 
 angular.module('newsApp.controllers')
-	.controller('ThreadCtrl', ['$scope', '$state', '$stateParams', 'Threads', function($scope, $state, $stateParams, Threads){
+	.controller('ThreadCtrl', ['$scope', '$state', '$stateParams', 'Threads', 'Cordova', '$timeout', function($scope, $state, $stateParams, Threads, Cordova, $timeout){
 		var threadIndex = parseInt($stateParams.index);
 		$scope.thread = Threads.threads[$stateParams.index];
 
-		$scope.consume = function(mediumIndex){
-			Threads.consume(threadIndex, mediumIndex).then(function(){
-				console.log('consumed');
+		$timeout(function(){
+			$scope.sideMenuController.close();
+		});
+		
+
+		$scope.consume = function(medium){
+			Threads.consume(medium).then(function(){
+				console.log('consumed ' + medium.id);
 			});
+
+			$scope.$emit('changeView', {url: medium.url});
 		};
 
 		$scope.load = function(done){
@@ -19,7 +26,7 @@ angular.module('newsApp.controllers')
 		};
 
 		var goToThread = function(next){
-			$state.go('navigation.threads', {index: next});
+			$state.go('app.presentation.navigation.threads', {index: next});
 		};
 
 		$scope.goToNextThread = function(){
@@ -33,4 +40,27 @@ angular.module('newsApp.controllers')
 		$scope.refresh= function(){
 			console.log('refresh');
 		};
+
+		$scope.leftButtons = [{
+			type: 'button-icon icon ion-navicon',
+			tap: function(){
+				Cordova.tick();
+				$scope.sideMenuController.toggleLeft();
+			}
+		},
+		{
+			type: 'button-icon icon ion-arrow-left-c',
+			tap: function(){
+				Cordova.tick();
+				$scope.goToPrevThread();
+			}
+		}];
+
+		$scope.rightButtons = [{
+			type: 'button-icon icon ion-arrow-right-c',
+			tap: function(){
+				Cordova.tick();
+				$scope.goToNextThread();
+			}
+		}];
 	}]);

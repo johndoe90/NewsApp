@@ -6,6 +6,45 @@ body{
   margin: 0;
 }
 
+.fp{
+	width: 100%;
+	height: 100%;
+}
+
+#application{
+	position: relative;
+}
+
+/*#navigation,
+#navigation-threads{
+	width: 350px;
+}*/
+
+#navigation{
+	display: inline-block; 
+	position: relative; 
+	height: 100%; 
+	z-index: 1;
+}
+
+#presentation{
+	display: inline-block; 
+	position:relative; 
+	/*width: calc(100% - 350px); */
+	height: 100%; 
+	margin-left: -4px;
+}
+
+#presentation > div:first-child{
+	position: absolute; 
+	top: 44px; 
+	left: 0px; 
+	width: 100%; 
+	height: calc(100% - 44px); 
+	z-index: 1000;
+	background: white;
+}
+
 #pf-thread{
 	display: -webkit-flex;
 	display: flex;
@@ -15,7 +54,11 @@ body{
 }
 
 #pf-media{
-	width: 350px;
+	width: 100%;
+}
+
+#pf-media ul li{
+	padding: 0;
 }
 
 #pf-media-view{
@@ -109,71 +152,50 @@ body{
 
 
 
-/*.pf-medium-image,
-.pf-medium div:nth-child(1){
-	max-width: 150px;
-	max-height: 100px;
+@media screen and (max-width: 639px){
+
+
+	#navigation
+	#navigation-threads{
+		width: 100%;
+	}
+
+	#presentation{
+		display: none;
+	}
+
+	.pf-medium-description{
+		display: none;
+	}
+
+	.pf-medium-description-top{
+		display: block;
+	}
 }
 
-.pf-medium div:nth-child(1){
-	-webkit-flex: 1;
-	flex: 1;
+@media screen and (min-width: 640px) and (max-width: 669px){
+	#navigation,
+	#presentation,
+	#navigation-threads{
+		width: 50%;
+	}
 
-	border: 1px solid green;
+	.pf-medium-description-top{
+		display: none;
+	}
 }
 
-.pf-medium div:nth-child(2){
-	-webkit-flex: 1;
-	flex: 1;
+@media screen and (min-width: 670px){
+	#navigation,
+	#navigation-threads{
+		width: 350px;
+	}
 
-	border: 1px solid blue;
+	#presentation{
+		width: calc(100% - 350px);
+	}
+
+	.pf-medium-description-top{
+		display: none;
+	}
 }
-
-.pf-medium-category{
-	text-transform: uppercase;
-}*/
-
-
-
-
-
-
-
-
-
-
-
-/*.fill-parent{
-	width: 100%;
-	height: 100%;
-}
-
-.slider{
-	width: 100%;
-	height: 100%;
-	background-color: hsla(90, 100%, 50%, 0.15);
-}
-
-#media-view{
-	display: -webkit-flex;
-	display: flex;
-
-	-webkit-flex-direction: row;
-	flex-direction: row;
-}
-#media-view div:first-child{
-	width: 500px;
-}
-
-#media-view div:nth-child(2){
-	-webkit-flex: 1;
-	flex: 1;
-
-	opacity: 0.5;
-	border: 1px solid green;
-	min-height: 100%;
-	height: 100%;
-
-	background: green;
-	display: block;
-}*/

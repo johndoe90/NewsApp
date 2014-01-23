@@ -18,4 +18,8 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <feature name="SoundEffects">
+        <param name="android-package" value="com.pfriedrich.news.SoundEffects" />
+        <param name="onload" value="true" />
+    </feature>
 </widget>

@@ -29,6 +29,12 @@ angular
 				
 
 			link: function($scope, $element){
+				$scope.display = false;
+				$timeout(function(){
+					$scope.$apply(function(){
+						$scope.display = true;
+					});
+				}, 1000);
 
 				if($scope.thread.media.length === 0){
 					$scope.load();
