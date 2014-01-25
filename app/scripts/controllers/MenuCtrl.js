@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('newsApp.controllers')
-	.controller('menuCtrl', ['$scope', 'Cordova', function($scope, Cordova){
+	.controller('MenuCtrl', ['$scope', 'Cordova', function($scope, Cordova){
 		$scope.leftButtons = [{
 			type: 'button-icon icon ion-navicon',
 			tap: function(){
@@ -9,4 +9,8 @@ angular.module('newsApp.controllers')
 				$scope.sideMenuController.toggleLeft();
 			}
 		}];
+
+		$scope.$on('$stateChangeSuccess', function(){
+			$scope.sideMenuController.close();
+		});
 	}]);

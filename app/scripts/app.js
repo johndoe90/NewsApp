@@ -17,15 +17,70 @@ angular.module('newsApp.services', [])
 		url: 'http://10.0.0.38:8080/news/media'
 	});
 
-angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.directives', 'newsApp.filters', 'ionic', 'pasvaz.bindonce'])
-	.config(['$stateProvider', '$urlRouterProvider', '$sceDelegateProvider', function($stateProvider, $urlRouterProvider, $sceDelegateProvider){
+angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.directives', 'newsApp.filters', 'ionic', 'pasvaz.bindonce', 'pascalprecht.translate'])
+	.config(['$stateProvider', '$urlRouterProvider', '$sceDelegateProvider', '$translateProvider', function($stateProvider, $urlRouterProvider, $sceDelegateProvider, $translateProvider){
 		$sceDelegateProvider.resourceUrlWhitelist([
 			'self',
 			'http://**',
 			'https://**'
 		]);
 
+		$translateProvider.translations('de', {
+			MENU_SEARCH: 'Suche'
+		});
+
+		$translateProvider.translations('en', {
+			MENU_SEARCH: 'Search'
+		});
+
+		$translateProvider.preferredLanguage('de');
+
 		$stateProvider
+			.state('app', {
+				abstract: true,
+				url: '/app',
+				controller: 'AppCtrl',
+				templateUrl: 'partials/views/app.tpl.html'
+			})
+			.state('app.settings', {
+				url: '/settings',
+				controller: 'SettingsCtrl',
+				templateUrl: 'partials/views/settings.tpl.html',
+				resolve: {
+					data: ['Settings', function(Settings){
+						return Settings.initialize();
+					}]
+				}
+			})
+			.state('app.media', {
+				abstract: true,
+				url: '/media',
+				controller: 'MediaCtrl',
+				templateUrl: 'partials/views/media.tpl.html',
+				resolve: {
+					data: ['Settings', function(Settings){
+						return Settings.initialize();
+					}]
+				}
+			})
+			.state('app.media.threads', {
+				url: '/threads/:index',
+				controller: 'ThreadCtrl',
+				templateUrl: 'partials/views/threads.tpl.html'
+			})
+			.state('app.media.search', {
+				url: '/search',
+				controller: 'SearchCtrl',
+				templateUrl: 'partials/views/search.tpl.html'
+			})
+			.state('app.media.favourites', {
+				url: '/favourites',
+				controller: 'FavouritesCtrl',
+				templatUrl: 'partials/views/favourites.tpl.html'
+			});
+
+		$urlRouterProvider.otherwise('/app/media/threads/0');
+		/*$stateProvider
 			.state('app', {
 				abstract: true,
 				url: '/app',
@@ -57,6 +112,11 @@ angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.d
 				url: '/navigation',
 				templateUrl: 'views/navigation.tpl.html'
 			})
+			.state('app.presentation.navigation.search', {
+				url: '/search',
+				templateUrl: 'views/search.tpl.html',
+				controller: 'SearchCtrl'
+			})
 			.state('app.presentation.navigation.threads', {
 				url: '/threads/:index',
 				templateUrl: 'views/threads.tpl.html',
@@ -66,68 +126,8 @@ angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.d
 						return Threads.initialize();
 					}]
 				}
-			});
-
-		/*$stateProvider
-			.state('presentation', {
-				abstract: true,
-				url: '/presentation', 
-				templateUrl: 'views/presentation.tpl.html'
-			})
-			.state('presentation.navigation', {
-				//abstract: true,
-				url: '/navigation',
-				templateUrl: 'views/navigation.tpl.html'
-			});*/
-			/*.state('presentation.navigation.settings', {
-				url: '/settings',
-				templateUrl: 'views/settings.tpl.html',
-				resolve: {
-					data: ['Settings', function(Settings){
-						return Settings.initialize();
-					}]
-				}
-			})
-			.state('presentation.navigation.threads', {
-				url: '/threads/:index',
-				templateUrl: 'views/threads.tpl.html',
-				controller: 'ThreadCtrl',
-				resolve: {
-					data: ['Threads', function(Threads){
-						return Threads.initialize();
-					}]
-				}
 			});*/
 
-		$urlRouterProvider.otherwise('/app/presentation/navigation/threads/0');
 
-		/*$stateProvider
-			.state('navigation', {
-				url: '/navigation',
-				abstract: true,
-				templateUrl: 'views/navigation.tpl.html'
-			})
-			.state('navigation.settings', {
-				url: '/settings',
-				templateUrl: 'views/settings.tpl.html',
-				resolve: {
-					data: ['Settings', function(Settings){
-						return Settings.initialize();
-					}]
-				}
-			})
-			.state('navigation.threads', {
-				url: '/threads/:index',
-				templateUrl: 'views/threads.tpl.html',
-				controller: 'ThreadCtrl',
-				resolve: {
-					data: ['Threads', function(Threads){
-						return Threads.initialize();
-					}]
-				}
-			});
-
-
-
-		$urlRouterProvider.otherwise('/navigation/threads/0');*/
+		
 	}]);

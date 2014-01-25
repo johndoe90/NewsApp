@@ -36,8 +36,8 @@ angular
 					});
 				}, 1000);
 
-				if($scope.thread.media.length === 0){
-					$scope.load();
+				if($scope.data.media.length === 0){
+					$scope.appendMedia();
 				}
 
 				$ionicGesture.on('swipeleft', function(){

@@ -9,8 +9,11 @@ angular.module('newsApp.services')
 				return MediaRepo.query(params);
 			},
 
-			consume: function(id){
+			/*consume: function(id){
 				return MediaRepo.post('/' + id + '/consume', {});
+			},*/
+			consume: function(medium){
+				return MediaRepo.post('/' + medium.id + '/consume', {});
 			},
 
 			indexOf: function(id){

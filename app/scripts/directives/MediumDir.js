@@ -7,8 +7,7 @@ angular.module('newsApp.directives')
 			templateUrl: 'views/medium.tpl.html',
 			scope: {
 				medium: '=',
-				consume: '=',
-				index: '@'
+				consumeMedium: '='
 			},
 			link: function(){
 			}

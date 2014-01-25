@@ -1,5 +1,5 @@
 <side-menus>
-  <div ng-controller="menuCtrl">
+  <div ng-controller="MenuCtrl">
     <pane side-menu-content drag-content="false">
       <div id="application" class="fp">
         <nav-bar animation="nav-title-slide-ios7" type="bar-positive" back-button-type="button-icon" back-button-icon="ion-arrow-left-c"></nav-bar>
@@ -8,9 +8,13 @@
     </pane>
     <side-menu side="left">
       <div class="list">
-        <a pf-tick class="item item-icon-left" ui-sref="app.presentation.navigation.search">
+        <a pf-tick class="item item-icon-left" href="#/app/media/threads/0">
+          <i class="icon ion-home"></i>
+          Home
+        </a>
+        <a pf-tick class="item item-icon-left" ui-sref="app.media.search">
           <i class="icon ion-search"></i>
-          Suche
+          <span translate="MENU_SEARCH"></span>
         </a>
         <a pf-tick class="item item-icon-left" ui-sref="app.settings">
           <i class="icon ion-gear-b"></i>
@@ -20,7 +24,7 @@
           <i class="icon ion-information"></i>
           Hilfe
         </a>
-        <a pf-tick class="item item-icon-left" href="#/favourites">
+        <a pf-tick class="item item-icon-left" ui-sref="app.media.favourites">
           <i class="icon ion-android-star"></i>
           Favoriten
         </a>

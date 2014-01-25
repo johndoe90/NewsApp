@@ -2,49 +2,59 @@
 
 angular
 	.module('newsApp.controllers')
-	.controller('SettingsCtrl', ['$scope','$ionicActionSheet', '$ionicModal', '$timeout', 'Threads', 'Cordova', 'MediaProviders', 'Categories', function($scope, $ionicActionSheet, $ionicModal, $timeout, Threads, Cordova, MediaProviders, Categories){
-		$timeout(function(){
-			$scope.sideMenuController.close();
-		});
-
-		$scope.threads = Threads.threads;
+	.controller('SettingsCtrl', ['$scope','$ionicActionSheet', '$ionicModal', 'Threads', 'Cordova', 'MediaProviders', 'Categories', 'Settings', function($scope, $ionicActionSheet, $ionicModal, Threads, Cordova, MediaProviders, Categories, Settings){
+		$scope.threads = Settings.settings.threads;
 		$scope.categories = Categories.categories;
 		$scope.mediaProviders = MediaProviders.mediaProviders;
 
 		$scope.addThread = function(){
-			Threads.add();
+			$scope.threads.push({
+				name: 'Filter ' + ($scope.threads.length + 1),
+				filter: {
+					categories: [],
+					mediaProviders: []
+				},
+				media: []
+			});
+
 			$scope.thread = $scope.threads[$scope.threads.length - 1];
-			$scope.openModal();
+			$scope.openEditFilterModal();
 		};
 
-		$scope.toggleMediaProvider = function(index){
-			var mediaProviderId = MediaProviders.mediaProviders[index].id;
-			Threads.toggleMediaProvider($scope.thread, mediaProviderId);
-			Threads.removeMedia($scope.thread);
+		$scope.toggleMediaProvider = function(mediaProviderIndex){
+			var mediaProviderId = MediaProviders.mediaProviders[mediaProviderIndex].id;
+			var indexOf = $scope.thread.filter.mediaProviders.indexOf(mediaProviderIndex);
+			if(indexOf === -1){
+				$scope.thread.filter.mediaProviders.push(mediaProviderId);
+			}else{
+				$scope.thread.filter.mediaProviders.splice(indexOf, 1);
+			}
 		};
 
-		$scope.toggleCategory = function(index){
-			var categoryId = Categories.categories[index].id;
-			Threads.toggleCategory($scope.thread, categoryId);
-			Threads.removeMedia($scope.thread);
+		$scope.toggleCategory = function(categoryIndex){
+			var categoryId = Categories.categories[categoryIndex].id;
+			var indexOf = $scope.thread.filter.categories.indexOf(categoryId);
+			if(indexOf === -1){
+				$scope.thread.filter.categories.push(categoryId);
+			}else{
+				$scope.thread.filter.categories.splice(indexOf, 1);
+			}
 		};
 
-		$scope.openModal = function(){
-			$ionicModal.fromTemplateUrl('views/filter.tpl.html', function(modal){
-				$scope.modal = modal;
+		$scope.openEditFilterModal = function(){
+			$ionicModal.fromTemplateUrl('partials/modals/editFilter.tpl.html', function(editFilterModal){
+				$scope.editFilterModal = editFilterModal;
 			},
 			{
 				scope: $scope,
 				animation: 'slide-in-up'
 			}).then(function(){
-				$scope.modal.show();
+				$scope.editFilterModal.show();
 			});
-
-			//$scope.modal.show();
 		};
 
-		$scope.closeModal = function(){
-			$scope.modal.hide();
+		$scope.closeEditFilterModal = function(){
+			$scope.editFilterModal.hide();
 		};
 
 		$scope.showFilterActionSheet = function(threadIndex){
@@ -67,20 +77,7 @@ angular
 					switch(buttonIndex){
 						case 0:
 							$scope.thread = $scope.threads[threadIndex];
-							$scope.openModal();
-							/*$ionicModal.fromTemplateUrl('views/filter.tpl.html', function(modal){
-								$scope.modal = modal;
-							},
-							{
-								scope: $scope,
-								animation: 'slide-in-up'
-							}).then(function(){
-								$scope.openModal();
-							});*/
-
-							//$scope.thread = $scope.threads[threadIndex];
-							/*$scope.modal.scope.thread = $scope.threads[threadIndex];
-							$scope.openModal();*/
+							$scope.openEditFilterModal();
 							return true;
 						case 1:
 							if(threadIndex > 0){

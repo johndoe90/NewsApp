@@ -52,6 +52,7 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
+					'<%= yeoman.app %>/partials/views/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
@@ -63,7 +64,7 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
+        hostname: '10.0.0.38',
         livereload: 35729
       },
       livereload: {
@@ -218,7 +219,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
+          src: ['*.html', 'partials/{,*/}*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -256,7 +257,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
-            'views/{,*/}*.html',
+            'partials/{,*/}*.html',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
             'fonts/*'

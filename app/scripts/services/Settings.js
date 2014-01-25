@@ -8,7 +8,8 @@ angular.module('newsApp.services')
 		return {
 			settings: {
 				//filters: []
-				threads: []
+				threads: [],
+				favourites: []
 			},
 
 			initialize: function(){
@@ -36,6 +37,9 @@ angular.module('newsApp.services')
 							settings = JSON.parse(Storage.local.settings);
 							angular.forEach(settings.threads, function(thread){
 								self.settings.threads.push(thread);
+							});
+							angular.forEach(settings.favourites, function(medium){
+								self.settings.favourites.push(medium);
 							});
 						}else{
 							settings = self.defaultSettings();
