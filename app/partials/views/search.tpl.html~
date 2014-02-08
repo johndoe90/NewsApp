@@ -9,6 +9,5 @@
   </div>
 	<content has-header="true" padding="false" on-infinite-scroll="searchMoreMedia" overflow-scroll="false" style="position: relative;">
     <pf-media media="data.media" consume-medium="consumeMedium" display="display"></pf-media>
-		<infinite-scroll></infinite-scroll>
 	</content>
 </view>

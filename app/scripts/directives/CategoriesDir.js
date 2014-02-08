@@ -2,9 +2,12 @@
 
 angular
 	.module('newsApp.directives')
-	.directive('pfCategories', ['Categories', function(Categories){
+	.directive('pfCategories', [function(){
 		return {
-			restrict: 'AE',
+			restrict: 'E',
+			templateUrl: 'partials/directives/categories.tpl.html'
+
+			/*restrict: 'AE',
 			replace: true,
 			scope: {
 				thread: '='
@@ -36,6 +39,6 @@ angular
 						}
 					}
 				};
-			}
+			}*/
 		};
 	}]);

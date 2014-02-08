@@ -11,11 +11,11 @@
 				</div>-->
 				<span class="pf-medium-category" bo-html="medium.category.id | mediaCategory"></span><br>
 				<span class="pf-medium-title" bo-html="medium.title"></span> <br />
-				<span class="pf-medium-description-top" bo-html="medium.description"></span>
+				<span class="pf-medium-description pf-medium-description-top" bo-html="medium.description"></span>
 				<span class="pf-medium-consumes" ng-bind-html="medium.consumed + ' mal gelesen'"></span>
 			</div>
 		</div>
 		<div style="">
-			<span class="pf-medium-description-bottom" bo-html="medium.description"></span>
+			<span class="pf-medium-description" bo-html="medium.description"></span>
 		</div>
 	</div>

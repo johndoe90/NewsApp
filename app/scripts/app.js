@@ -63,20 +63,20 @@ angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.d
 					}]
 				}
 			})
-			.state('app.media.threads', {
-				url: '/threads/:index',
-				controller: 'ThreadCtrl',
-				templateUrl: 'partials/views/threads.tpl.html'
-			})
 			.state('app.media.search', {
 				url: '/search',
 				controller: 'SearchCtrl',
 				templateUrl: 'partials/views/search.tpl.html'
 			})
+			.state('app.media.threads', {
+				url: '/threads/:index',
+				controller: 'ThreadCtrl',
+				templateUrl: 'partials/views/threads.tpl.html'
+			})
 			.state('app.media.favourites', {
 				url: '/favourites',
 				controller: 'FavouritesCtrl',
-				templatUrl: 'partials/views/favourites.tpl.html'
+				templateUrl: 'partials/views/favourites.tpl.html'
 			});
 
 		$urlRouterProvider.otherwise('/app/media/threads/0');

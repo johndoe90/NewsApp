@@ -6,7 +6,7 @@ angular
 		return {
 			restrict: 'AE',
 			replace: true,
-			template: '<div class="fp"><iframe ng-if="modalViewVisible" class="fp" ng-src="{{url}}"></iframe><div id="modalViewLoading" style="position: absolute; top: 50%; top: calc(50% - 32px); left: 50%; left: calc(50% - 32px); font-size: 32px;"><i class="ion-loading-d"></i></div></div>',
+			template: '<div class="fp"><iframe ng-if="modalViewVisible" class="fp" ng-src="{{url}}"></iframe><div id="modalViewLoading" style="position: absolute; top: 50%; top: calc(50% - 16px); left: 50%; left: calc(50% - 16px); font-size: 32px;"><i class="ion-loading-d"></i></div></div>',
 			scope: {
 				modalViewVisible: '=',
 				url: '='

@@ -74,16 +74,16 @@ angular.module('newsApp.services')
 							name: 'Thread 1',
 							media: [],
 							filter: {
-								categories: [6,7,8,9,10],
-								mediaProviders: [1,2]
+								categories: [5,8,11,14,17],
+								mediaProviders: [3,4]
 							}
 						},
 						{
 							name: 'Thread 2',
 							media: [],
 							filter: {
-								categories: [1,2,3,4,5],
-								mediaProviders: [1,2]
+								categories: [20,23,26,29,32],
+								mediaProviders: [3,4]
 							}
 						}
 					]
@@ -100,7 +100,36 @@ angular.module('newsApp.services')
 						}
 					]
 				};*/
+			},
+
+			addFavourite: function(medium){
+				var index = -1;
+				for(var i = this.settings.favourites.length - 1; i >= 0; i -= 1){
+					if(this.settings.favourites[i].id === medium.id){
+						index = i;
+						break;
+					}
+				}
+
+				if(index === -1){
+					this.settings.favourites.push(medium);
+				}
+			},
+
+			removeFavourite: function(medium){
+				var index = -1;
+				for(var i = this.settings.favourites.length - 1; i >= 0; i -= 1){
+					if(this.settings.favourites[i].id === medium.id){
+						index = i;
+						break;
+					}
+				}
+
+				if(index !== -1){
+					this.settings.favourites.splice(index, 1);
+				}
 			}
+
 		};
 	}]);
 /*'use strict';

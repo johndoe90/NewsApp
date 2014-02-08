@@ -18,10 +18,13 @@
 			</li>
 			<li class="item item-divider">Kategorien</li>
 			<li class="item item-checkbox" ng-repeat="category in categories">
-				<label class="checkbox">
-					<input type="checkbox" ng-model="includeCategory" ng-init="includeCategory = (category.id | in : thread.filter.categories)" ng-change="toggleCategory($index)">
-				</label>
-				{{category.name}}
+				<div ng-class="'category-level-' + category.sort.split('.').length">
+					<label class="checkbox" ng-class="'category-level-' + category.sort.split('.').length">
+						<!--<input type="checkbox" ng-model="includeCategory" ng-init="includeCategory = (category.id | in : thread.filter.categories)" ng-change="toggleCategory($index)">-->
+						<input type="checkbox" ng-model="categoryCheckboxes[$index]" ng-init="categoryCheckboxes[$index] = (category.id | in : thread.filter.categories)" ng-change="toggleCategory($index)"/> 
+					</label>
+					<span ng-style="category | font">{{category.name}}</span>
+				</div>
 			</li>
 		</ul>
 	</content>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('newsApp.directives')
-	.directive('pfMedium', function(){
+	.directive('pfMedium', ['$ionicGesture', function($ionicGesture){
 		return {
 			restrict: 'AE',
 			templateUrl: 'views/medium.tpl.html',
@@ -9,7 +9,10 @@ angular.module('newsApp.directives')
 				medium: '=',
 				consumeMedium: '='
 			},
-			link: function(){
+			link: function($scope, $element){
+				$ionicGesture.on('hold', function(){
+					$scope.$emit('showMediumActionSheet', {medium: $scope.medium});
+				}, $element);
 			}
 		};
-	});
+	}]);

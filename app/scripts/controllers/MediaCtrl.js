@@ -14,6 +14,13 @@ angular.module('newsApp.controllers')
 			mediaProviders: []
 		};
 
+		$scope.simulateRefresh = function(){
+			console.log('refreshing');
+			$scope.prependMedia().then(function(){
+				$scope.$broadcast('scroll.refreshComplete');
+			});
+		};
+
 		$scope.prependMedia = function(params){
 			params = angular.extend({
 				'categories[]': $scope.data.categories,

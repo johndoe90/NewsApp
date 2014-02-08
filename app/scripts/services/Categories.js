@@ -37,12 +37,22 @@ angular.module('newsApp.services')
 				}
 			},
 
+			indexOf: function(id){
+				for(var i = 0; i < this.categories.length; i++){
+					if(this.categories[i].id === id){
+						return i;
+					}
+				}
+
+				return -1;
+			},
+
 			children: function(id){
 				var children = [];
 				var category = this.get(id);
 		    for(var i = 0; i < this.categories.length; i++){
 		      if(this.categories[i].sort.indexOf(category.sort) === 0){
-		        children.push(this.categories[i].id);
+		        children.push(this.categories[i]);
 		      }
 		    }
 
