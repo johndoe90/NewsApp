@@ -2,7 +2,7 @@
   <div ng-controller="MenuCtrl">
     <pane side-menu-content drag-content="false">
       <div id="application" class="fp">
-        <nav-bar animation="nav-title-slide-ios7" type="bar-positive" back-button-type="button-icon" back-button-icon="ion-arrow-left-c"></nav-bar>
+        <nav-bar  animation="nav-title-slide-ios7" type="bar-positive" back-button-type="button-icon" back-button-icon="ion-arrow-left-c" style="cursor: pointer;"></nav-bar>
         <div class="fp" ui-view></div>
       </div>
     </pane>
@@ -16,7 +16,7 @@
           <i class="icon ion-search"></i>
           <span translate="MENU_SEARCH"></span>
         </a>
-        <a pf-tick class="item item-icon-left" ui-sref="app.settings">
+        <a pf-tick class="item item-icon-left" ui-sref="app.settings.index">
           <i class="icon ion-gear-b"></i>
           Einstellungen
         </a>

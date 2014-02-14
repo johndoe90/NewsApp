@@ -2,11 +2,11 @@
 
 angular
 	.module('newsApp.controllers')
-	.controller('SearchCtrl', ['$scope', 'Settings', 'Categories', 'MediaProviders', function($scope, Settings, Categories, MediaProviders){
+	.controller('SearchCtrl', ['$scope', '$timeout', '$ionicActionSheet', 'Settings', 'Categories', 'MediaProviders', function($scope, $timeout, $ionicActionSheet, Settings, Categories, MediaProviders){
 		var query;
 
-		$scope.searchField = '';
-
+		$scope.data.searchField = '';
+		$scope.data.end = false;
 		$scope.data.media = [];
 		$scope.data.quantity = 10;
 		$scope.data.categories = [];
@@ -23,13 +23,11 @@ angular
 
 		$scope.searchMedia = function(params){
 			params = angular.extend({
-				'q': $scope.searchField
+				'q': $scope.data.searchField
 			}, params || {});
 
-			console.log('search: ' + $scope.searchField);
-			if($scope.searchField.length > 0){
-				console.log('search: ' + $scope.searchField);
-				query = $scope.searchField;
+			if($scope.data.searchField.length > 0){
+				query = $scope.data.searchField;
 				$scope.data.media = [];
 				$scope.data.end = false;
 				$scope.appendMedia(params);
@@ -37,12 +35,35 @@ angular
 		};
 
 		$scope.searchMoreMedia = function(done, arg2){
-			console.log('search more: ' + query);
-			$scope.loadMoreMedia(done, arg2, {'q': query});
-
-			
-			/*$scope.appendMedia({'q': query}).then(function(){
-				(done || angular.noop)();
-			});*/
+			if(query && $scope.data.end === false){
+				$scope.loadMoreMedia(done, arg2, {
+					'q': query,
+					'first': $scope.data.media.length > 0 ? $scope.data.media[$scope.data.media.length - 1].id : ''//$scope.data.media[$scope.data.media.length - 1].id || ''
+				});
+			}else{
+				$timeout(function(){
+					done();
+				}, 100);
+			}
 		};
+
+		$scope.$on('showMediumActionSheet', function(event, arg){
+			$ionicActionSheet.show({
+				buttons: [
+					{ text: 'add to favourites' }
+				],
+				cancelText: 'cancel',
+
+				cancel: function(){},
+				buttonClicked: function(buttonIndex){
+					switch(buttonIndex){
+						case 0:
+							Settings.addFavourite(arg.medium);
+							break;
+					}
+
+					return true;
+				}
+			});
+		});
 	}]);

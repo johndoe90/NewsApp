@@ -17,7 +17,7 @@ angular.module('newsApp.services', [])
 		url: 'http://10.0.0.38:8080/news/media'
 	});
 
-angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.directives', 'newsApp.filters', 'ionic', 'pasvaz.bindonce', 'pascalprecht.translate'])
+angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.directives', 'newsApp.filters', 'ionic', 'ngSanitize', 'pasvaz.bindonce', 'pascalprecht.translate'])
 	.config(['$stateProvider', '$urlRouterProvider', '$sceDelegateProvider', '$translateProvider', function($stateProvider, $urlRouterProvider, $sceDelegateProvider, $translateProvider){
 		$sceDelegateProvider.resourceUrlWhitelist([
 			'self',
@@ -42,7 +42,7 @@ angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.d
 				controller: 'AppCtrl',
 				templateUrl: 'partials/views/app.tpl.html'
 			})
-			.state('app.settings', {
+			/*.state('app.settings', {
 				url: '/settings',
 				controller: 'SettingsCtrl',
 				templateUrl: 'partials/views/settings.tpl.html',
@@ -51,6 +51,26 @@ angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.d
 						return Settings.initialize();
 					}]
 				}
+			})*/
+			.state('app.settings', {
+				abstract: true,
+				url: '/settings',
+				controller: 'SettingsCtrl',
+				templateUrl: 'partials/views/app.settings.tpl.html',
+				resolve: {
+					data: ['Settings', function(Settings){
+						return Settings.initialize();
+					}]
+				}
+			})
+			.state('app.settings.index', {
+				url: '/index',
+				templateUrl: 'partials/views/app.settings.index.tpl.html'
+			})
+			.state('app.settings.editFilter', {
+				url: '/editFilter/:index',
+				controller: 'EditFilterCtrl',
+				templateUrl: 'partials/views/app.settings.editFilter.tpl.html'
 			})
 			.state('app.media', {
 				abstract: true,

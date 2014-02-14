@@ -1,9 +1,9 @@
-<view id="navigation-threads" title="data.name" hide-back-button="true" left-buttons="leftButtons" right-buttons="rightButtons">
-	<content has-header="true" padding="false" on-infinite-scroll="loadMoreMedia" on-refresh="simulateRefresh()" overflow-scroll="false">
-		<refresher></refresher>
+<view id="navigation-threads" title="'<span pf-nav-click-handler>WTF</span>'" hide-back-button="true" left-buttons="leftButtons" right-buttons="rightButtons">
+	<content has-header="true" padding="false" on-infinite-scroll="loadMore" on-refresh="refresh()" overflow-scroll="false">
+		<refresher ></refresher>
 		<pf-thread>
 			<pf-media media="data.media" consume-medium="consumeMedium" display="display"></pf-media>
 		</pf-thread> 
-		<infinite-scroll></infinite-scroll>
+		<infinite-scroll ng-if="data.media.length > 0"></infinite-scroll>
 	</content>
 </view>

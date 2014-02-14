@@ -68,38 +68,33 @@ angular.module('newsApp.services')
 			},
 
 			defaultSettings: function(){
-				return {
-					threads: [
-						{
-							name: 'Thread 1',
-							media: [],
-							filter: {
-								categories: [5,8,11,14,17],
-								mediaProviders: [3,4]
-							}
-						},
-						{
-							name: 'Thread 2',
-							media: [],
-							filter: {
-								categories: [20,23,26,29,32],
-								mediaProviders: [3,4]
-							}
-						}
-					]
+				var defaultSettings = {
+					threads: []
 				};
-				/*return {
-					filters: [
-						{
-							categories: [6,7,8,9,10],
-							mediaProviders: [1,2]
+
+				var categories = (function(){
+					var temp = [];
+					angular.forEach(Categories.categories, function(category){
+						temp.push(category.id);
+					});
+
+					return temp;
+				}());
+
+				var mediaProviders = MediaProviders.mediaProviders;
+
+				angular.forEach(mediaProviders, function(mediaProvider){
+					defaultSettings.threads.push({
+						name: mediaProvider.mediaProviderName,
+						filter: {
+							mediaProviders: [mediaProvider.id],
+							categories: categories
 						},
-						{
-							categories: [1,2,3,4,5],
-							mediaProviders: [1,2]
-						}
-					]
-				};*/
+						media: []
+					});
+				});
+
+				return defaultSettings;
 			},
 
 			addFavourite: function(medium){

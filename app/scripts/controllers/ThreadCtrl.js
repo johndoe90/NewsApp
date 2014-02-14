@@ -3,10 +3,16 @@
 angular.module('newsApp.controllers')
 	.controller('ThreadCtrl', ['$scope', '$state', '$stateParams', 'Cordova', 'Settings', '$timeout', '$ionicActionSheet', function($scope, $state, $stateParams, Cordova, Settings, $timeout, $ionicActionSheet){
 		var threadIndex = parseInt($stateParams.index);
+		$scope.data.end = false;
 		$scope.data.name = Settings.settings.threads[threadIndex].name;
 		$scope.data.media = Settings.settings.threads[threadIndex].media;
 		$scope.data.categories = Settings.settings.threads[threadIndex].filter.categories;
 		$scope.data.mediaProviders = Settings.settings.threads[threadIndex].filter.mediaProviders;
+
+		$scope.navClick.action = function(){
+			console.log('B');
+			//$state.go('app.settings.editFilter', {index: threadIndex});
+		};
 
 		$scope.goToThread = function(next){
 			$state.go('app.media.threads', {index: next});
@@ -43,7 +49,33 @@ angular.module('newsApp.controllers')
 			}
 		}];
 
+		$scope.refresh = function(){
+			console.log('refresh');
+			var params = {
+				'categories[]': $scope.data.categories,
+				'mediaProviders[]': $scope.data.mediaProviders,
+				'quantity': $scope.data.quantity,
+				'last': $scope.data.media[0].id
+			};
 
+			$scope.prependMedia(params).then(function(){
+				$scope.$broadcast('scroll.refreshComplete');
+			});
+		};
+
+		$scope.loadMore = function(done, arg2){
+			if($scope.data.end === false){
+				console.log('loadMore');
+				var params = {
+					'categories[]': $scope.data.categories,
+					'mediaProviders[]': $scope.data.mediaProviders,
+					'quantity': $scope.data.quantity
+				};
+				params = $scope.data.media.length > 0 ? angular.extend({'first': $scope.data.media[$scope.data.media.length - 1].id}, params) : params;
+
+				$scope.loadMoreMedia(done, arg2, params);
+			}
+		};
 
 		$scope.$on('showMediumActionSheet', function(event, arg){
 			$ionicActionSheet.show({

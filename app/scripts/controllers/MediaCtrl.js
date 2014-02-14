@@ -14,21 +14,7 @@ angular.module('newsApp.controllers')
 			mediaProviders: []
 		};
 
-		$scope.simulateRefresh = function(){
-			console.log('refreshing');
-			$scope.prependMedia().then(function(){
-				$scope.$broadcast('scroll.refreshComplete');
-			});
-		};
-
 		$scope.prependMedia = function(params){
-			params = angular.extend({
-				'categories[]': $scope.data.categories,
-				'mediaProviders[]': $scope.data.mediaProviders,
-				'quantity': $scope.data.quantity,
-				'last': $scope.data.media[0].id
-			}, params || {});
-
 			return Media.fetch(params).then(function(media){
 				angular.forEach(media, function(medium){
 					$scope.data.media.splice(0, 0, medium);
@@ -37,13 +23,6 @@ angular.module('newsApp.controllers')
 		};
 
 		$scope.appendMedia = function(params){
-			params = angular.extend({
-				'categories[]': $scope.data.categories,
-				'mediaProviders[]': $scope.data.mediaProviders,
-				'quantity': $scope.data.quantity
-			}, params || {});
-			params = $scope.data.media.length > 0 ? angular.extend({'first': $scope.data.media[$scope.data.media.length - 1].id}, params) : params;
-
 			return Media.fetch(params).then(function(media){
 				if(media.length === 0){
 					$scope.data.end = true;

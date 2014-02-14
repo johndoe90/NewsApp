@@ -1,11 +1,6 @@
-
-	<div id="pf-media">
-		<!--<div ng-if="display">-->
-		
-		
-		<ul class="list card">
-			<li pf-medium class="item" ng-repeat="medium in media" medium="medium" consume-medium="consumeMedium" style="margin-bottom: 7px;"></li>
-		</ul>
-
-		
-	</div>
+<div id="pf-media" style="width: 100%;">
+	<div class="item" style="text-align: center; font-style: italic;" ng-if="media.length === 0">keine Ergebnisse</div>
+	<ul class="list card" ng-if="media.length > 0">
+		<li pf-medium class="item" ng-repeat="medium in media" medium="medium" consume-medium="consumeMedium" style="margin-bottom: 7px;"></li>
+	</ul>
+</div>
