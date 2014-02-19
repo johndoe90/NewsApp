@@ -11,15 +11,4 @@ angular.module('newsApp.services')
 					});
 			}
 		};
-
-		/*function CategoryRepo(){}
-		CategoryRepo.prototype.query = function(params){
-			return $http
-				.get(CATEGORY_REPO_CONFIG.url, {params: params})
-				.then(function(response){
-					return response.data;
-				});
-		};
-
-		return new CategoryRepo();*/
 	}]);

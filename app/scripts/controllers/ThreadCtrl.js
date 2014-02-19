@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('newsApp.controllers')
-	.controller('ThreadCtrl', ['$scope', '$state', '$stateParams', 'Cordova', 'Settings', '$timeout', '$ionicActionSheet', function($scope, $state, $stateParams, Cordova, Settings, $timeout, $ionicActionSheet){
+	.controller('ThreadCtrl', ['$scope', '$state', '$stateParams', 'Cordova', 'Settings', function($scope, $state, $stateParams, Cordova, Settings){
 		var threadIndex = parseInt($stateParams.index);
 		$scope.data.end = false;
 		$scope.data.name = Settings.settings.threads[threadIndex].name;
@@ -77,7 +77,24 @@ angular.module('newsApp.controllers')
 			}
 		};
 
-		$scope.$on('showMediumActionSheet', function(event, arg){
+		$scope.mediumButtons = [
+			{
+				content: '<i class="icon ion-bookmark"></i>merken',
+				tap: function(event, medium){
+					event.stopPropagation();
+					$scope.addFavourite(medium);
+				}
+			},
+			{
+				content: '<i class="icon ion-document-text"></i>Lesen',
+				tap: function(event, medium){
+					event.stopPropagation();
+					$scope.consumeMedium(medium);
+				}
+			}
+		];
+
+		/*$scope.$on('showMediumActionSheet', function(event, arg){
 			$ionicActionSheet.show({
 				buttons: [
 					{ text: 'add to favourites' }
@@ -95,5 +112,5 @@ angular.module('newsApp.controllers')
 					return true;
 				}
 			});
-		});
+		});*/
 	}]);

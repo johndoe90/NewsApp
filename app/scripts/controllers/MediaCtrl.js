@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('newsApp.controllers')
-	.controller('MediaCtrl', ['$scope', '$ionicModal', 'Media', function($scope, $ionicModal, Media){
+	.controller('MediaCtrl', ['$scope', '$ionicModal', 'Media', 'Settings', function($scope, $ionicModal, Media, Settings){
 		$scope.modalViewVisible = false;
 		$scope.primaryViewVisible = false;
-		$scope.url = 'http://10.0.0.38:8080/news';
+		$scope.url = 'http://10.0.0.38:8080/scoop';
 
 		$scope.data = {
 			end: false,
@@ -42,6 +42,11 @@ angular.module('newsApp.controllers')
 			}else{
 				(done || angular.noop)();
 			}
+		};
+
+		$scope.addFavourite = function(medium){
+			console.log('add ' + medium.id + ' to favourites');
+			Settings.addFavourite(medium);
 		};
 
 		$scope.consumeMedium = function(medium){

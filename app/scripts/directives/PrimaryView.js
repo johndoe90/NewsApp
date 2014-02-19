@@ -6,7 +6,7 @@ angular
 		return {
 			restrict: 'AE',
 			replace: true,
-			template: '<div class="fp"><iframe ng-if="primaryViewVisible" class="fp" ng-src="{{url}}"></iframe><div id="primaryViewLoading" style="position: absolute; top: 50%; top: calc(50% - 16px); left: 50%; left: calc(50% - 16px); font-size: 32px;"><i class="ion-loading-d"></i></div></div>',
+			templateUrl: 'partials/directives/primaryView.tpl.html',
 			scope: {
 				primaryViewVisible: '=',
 				url: '='
@@ -22,13 +22,13 @@ angular
 
 				$scope.$watch('url', function(){
 					if($scope.primaryViewVisible === true){
-						$element.find('#primaryViewLoading').show();
+						$element.find('#loading').show();
 					}
 				});
 
 				$scope.$watch('primaryViewVisible', function(){
 					$element.find('iframe').bind('load', function(){
-						$element.find('#primaryViewLoading').hide();
+						$element.find('#loading').hide();
 					});
 
 					angular.element($window).bind('resize', function(){

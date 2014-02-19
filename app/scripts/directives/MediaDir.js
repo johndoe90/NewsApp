@@ -5,12 +5,12 @@ angular.module('newsApp.directives')
 		return {
 			restrict: 'AE',
 			replace: true,
-			templateUrl: 'views/media.tpl.html',
-			scope: {
+			templateUrl: 'partials/directives/media.tpl.html',
+			/*scope: {
 				media: '=',
 				consumeMedium: '=',
 				display: '='
-			},
+			},*/
 			link: function(){
 			}
 		};

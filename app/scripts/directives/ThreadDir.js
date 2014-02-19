@@ -7,7 +7,7 @@ angular
 			restrict: 'AE',
 			transclude: true,
 			replace: true,
-			template: '<div id="pf-thread" ng-transclude></div>',
+			templateUrl: 'partials/directives/thread.tpl.html',
 			link: function($scope, $element){
 				$scope.display = false;
 				$timeout(function(){

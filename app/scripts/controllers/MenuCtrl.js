@@ -4,7 +4,6 @@ angular.module('newsApp.controllers')
 	.controller('MenuCtrl', ['$scope', 'Cordova', function($scope, Cordova){
 		$scope.navClick = {
 			action: function(){
-				alert('clicked');
 			}
 		};
 

@@ -6,8 +6,6 @@ angular
 		//not needed right away but takes some methods from SettingsCtrl and put them here
 		$scope.data.thread = $scope.data.threads[parseInt($stateParams.index)];
 
-		//window.alert(parseInt($stateParams.index));
-
 		$scope.toggleMediaProvider = function(mediaProviderIndex){
 			var mediaProviderId = MediaProviders.mediaProviders[mediaProviderIndex].id;
 			var indexOf = $scope.data.thread.filter.mediaProviders.indexOf(mediaProviderId);

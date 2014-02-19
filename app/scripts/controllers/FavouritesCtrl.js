@@ -34,5 +34,20 @@ angular
 			});
 		});
 
-		console.log($scope.data.media.length);
+		$scope.mediumButtons = [
+			{
+				content: '<i class="icon ion-bookmark"></i>merken',
+				tap: function(event, medium){
+					event.stopPropagation();
+					$scope.addFavourite(medium);
+				}
+			},
+			{
+				content: '<i class="icon ion-document-text"></i>Lesen',
+				tap: function(event, medium){
+					event.stopPropagation();
+					$scope.consumeMedium(medium);
+				}
+			}
+		];
 	}]);

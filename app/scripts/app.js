@@ -8,16 +8,16 @@ angular.module('newsApp.filters', []);
 
 angular.module('newsApp.services', [])
 	.constant('MEDIA_PROVIDER_REPO_CONFIG', {
-		url: 'http://10.0.0.38:8080/news/mediaProviders'
+		url: 'http://10.0.0.38:8080/scoop/mediaProviders'
 	})
 	.constant('CATEGORY_REPO_CONFIG', {
-		url: 'http://10.0.0.38:8080/news/categories'
+		url: 'http://10.0.0.38:8080/scoop/categories'
 	})
 	.constant('MEDIA_REPO_CONFIG', {
-		url: 'http://10.0.0.38:8080/news/media'
+		url: 'http://10.0.0.38:8080/scoop/media'
 	});
 
-angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.directives', 'newsApp.filters', 'ionic', 'ngSanitize', 'pasvaz.bindonce', 'pascalprecht.translate'])
+angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.directives', 'newsApp.filters', 'ionic','ngSanitize', 'pasvaz.bindonce', 'pascalprecht.translate'])
 	.config(['$stateProvider', '$urlRouterProvider', '$sceDelegateProvider', '$translateProvider', function($stateProvider, $urlRouterProvider, $sceDelegateProvider, $translateProvider){
 		$sceDelegateProvider.resourceUrlWhitelist([
 			'self',
@@ -42,16 +42,6 @@ angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.d
 				controller: 'AppCtrl',
 				templateUrl: 'partials/views/app.tpl.html'
 			})
-			/*.state('app.settings', {
-				url: '/settings',
-				controller: 'SettingsCtrl',
-				templateUrl: 'partials/views/settings.tpl.html',
-				resolve: {
-					data: ['Settings', function(Settings){
-						return Settings.initialize();
-					}]
-				}
-			})*/
 			.state('app.settings', {
 				abstract: true,
 				url: '/settings',
@@ -100,54 +90,4 @@ angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.d
 			});
 
 		$urlRouterProvider.otherwise('/app/media/threads/0');
-		/*$stateProvider
-			.state('app', {
-				abstract: true,
-				url: '/app',
-				templateUrl: 'views/app.tpl.html'
-			})
-			.state('app.settings', {
-				url: '/settings',
-				templateUrl: 'views/settings.tpl.html',
-				controller: 'SettingsCtrl',
-				resolve: {
-					data: ['Threads', function(Threads){
-						return Threads.initialize();
-					}]
-				}
-			})
-			.state('app.view', {
-				url: '/view/?url',
-				templateUrl: 'views/view.tpl.html',
-				controller: 'ViewCtrl'
-			})
-			.state('app.presentation', {
-				abstract: true,
-				url: '/presentation',
-				templateUrl: 'views/presentation.tpl.html',
-				controller: 'ViewCtrl'
-			})
-			.state('app.presentation.navigation', {
-				abstract: true,
-				url: '/navigation',
-				templateUrl: 'views/navigation.tpl.html'
-			})
-			.state('app.presentation.navigation.search', {
-				url: '/search',
-				templateUrl: 'views/search.tpl.html',
-				controller: 'SearchCtrl'
-			})
-			.state('app.presentation.navigation.threads', {
-				url: '/threads/:index',
-				templateUrl: 'views/threads.tpl.html',
-				controller: 'ThreadCtrl',
-				resolve: {
-					data: ['Threads', function(Threads){
-						return Threads.initialize();
-					}]
-				}
-			});*/
-
-
-		
 	}]);
