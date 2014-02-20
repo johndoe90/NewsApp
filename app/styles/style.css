@@ -11,6 +11,12 @@ content{
 	font-size: 32px;
 }
 
+.loading{
+	color: black;
+	font-size: 32px;
+	background-color: transparent;
+}
+
 #media-layout{
 	width: 100%;
 	height: 100%;
@@ -212,4 +218,57 @@ content{
 	#presentation{
 		display: none;
 	}
+}
+
+#side-menu{
+	color: #eee;
+	padding: 13px;
+	background: linear-gradient(to right, #202020 270px, #080808);
+}
+
+#side-menu .item{
+	background: #202020;
+	border: none;
+	border-bottom: 1px solid #404040;
+	margin-bottom: 1px;
+
+	font-size: 16px;
+}
+
+#side-menu .item i{
+	font-size: 21px;
+	left: 6px;
+}
+
+.bar-black{
+	background-color: #303030;
+	border-color: #303030;
+	box-shadow: 0px 3px 3px #aaa;
+}
+
+.bar-black .title{
+	color: #eee;
+}
+
+.bar-black .button{
+	color: #eee;
+}
+
+#pf-media .list .item .tabs{
+	color: #eee;
+	background: #303030;
+	background-image: #303030;
+	background-color: #303030;
+}
+
+#pf-media .list .item .tabs .tab-item{
+	color: #eee;
+	font-size: 16px;
+}
+
+#pf-media .list .item .tabs .tab-item .icon{
+	color: #eee;
+	margin-top: 4px;
+	height: 24px;
+	font-size: 21px;
 }

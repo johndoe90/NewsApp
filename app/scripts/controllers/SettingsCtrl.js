@@ -43,10 +43,12 @@ angular
 					var temp;
 					switch(buttonIndex){
 						case 0:
+							Cordova.tick();
 							$scope.data.thread = $scope.data.threads[threadIndex];
 							$state.go('app.settings.editFilter', {index: threadIndex});
 							return true;
 						case 1:
+							Cordova.tick();
 							if(threadIndex > 0){
 								temp = $scope.data.threads[threadIndex - 1];
 								$scope.data.threads[threadIndex - 1] = $scope.data.threads[threadIndex];
@@ -57,6 +59,7 @@ angular
 							
 							return false;
 						case 2:
+							Cordova.tick();
 							if(threadIndex < ($scope.data.threads.length - 1)){
 								temp = $scope.data.threads[threadIndex + 1];
 								$scope.data.threads[threadIndex + 1] = $scope.data.threads[threadIndex];

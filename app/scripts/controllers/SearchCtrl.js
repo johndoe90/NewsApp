@@ -20,8 +20,8 @@ angular
 			$scope.data.mediaProviders.push(mediaProvider.id);
 		});
 
-
 		$scope.searchMedia = function(params){
+			console.log('search');
 			params = angular.extend({
 				'q': $scope.data.searchField
 			}, params || {});
@@ -69,17 +69,17 @@ angular
 
 		$scope.mediumButtons = [
 			{
-				content: '<i class="icon ion-bookmark"></i>merken',
-				tap: function(event, medium){
-					event.stopPropagation();
-					$scope.addFavourite(medium);
-				}
-			},
-			{
-				content: '<i class="icon ion-document-text"></i>Lesen',
+				content: '<i class="icon ion-document-text"></i>lesen',
 				tap: function(event, medium){
 					event.stopPropagation();
 					$scope.consumeMedium(medium);
+				}
+			},
+			{
+				content: '<i class="icon ion-android-star"></i>merken',
+				tap: function(event, medium){
+					event.stopPropagation();
+					$scope.addFavourite(medium);
 				}
 			}
 		];

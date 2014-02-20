@@ -1,16 +1,13 @@
-<side-menus>
+<ion-side-menus>
   <div ng-controller="MenuCtrl">
-    <pane side-menu-content drag-content="false">
+    <ion-pane ion-side-menu-content drag-content="false">
       <div id="application" class="fp">
-        <nav-bar  animation="nav-title-slide-ios7" type="bar-positive" back-button-type="button-icon" back-button-icon="ion-arrow-left-c" style="cursor: pointer;"></nav-bar>
+        <ion-nav-bar  animation="nav-title-slide-ios7" type="bar-black" back-button-type="button-icon" back-button-icon="ion-arrow-left-c" style="cursor: pointer;"></ion-nav-bar>
         <div class="fp" ui-view></div>
       </div>
-    </pane>
-    <side-menu side="left">
+    </ion-pane>
+    <ion-side-menu id="side-menu" side="left">
       <div class="list">
-        <div class="item item-divider" style="text-align: center;">
-          Men&uuml;
-        </div>
         <a pf-tick class="item item-icon-left" href="#/app/media/threads/0">
           <i class="icon ion-home"></i>
           Home
@@ -32,6 +29,6 @@
           Favoriten
         </a>
       </div>
-    </side-menu>
+    </ion-side-menu>
   </div>
-</side-menus>
+</ion-side-menus>

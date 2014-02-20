@@ -36,17 +36,17 @@ angular
 
 		$scope.mediumButtons = [
 			{
-				content: '<i class="icon ion-bookmark"></i>merken',
-				tap: function(event, medium){
-					event.stopPropagation();
-					$scope.addFavourite(medium);
-				}
-			},
-			{
-				content: '<i class="icon ion-document-text"></i>Lesen',
+				content: '<i class="icon ion-document-text"></i>lesen',
 				tap: function(event, medium){
 					event.stopPropagation();
 					$scope.consumeMedium(medium);
+				}
+			},
+			{
+				content: '<i class="icon ion-trash-a"></i>entfernen',
+				tap: function(event, medium){
+					event.stopPropagation();
+					$scope.removeFavourite(medium);
 				}
 			}
 		];

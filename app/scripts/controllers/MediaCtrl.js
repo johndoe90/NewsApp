@@ -45,8 +45,11 @@ angular.module('newsApp.controllers')
 		};
 
 		$scope.addFavourite = function(medium){
-			console.log('add ' + medium.id + ' to favourites');
 			Settings.addFavourite(medium);
+		};
+
+		$scope.removeFavourite = function(medium){
+			Settings.removeFavourite(medium);
 		};
 
 		$scope.consumeMedium = function(medium){

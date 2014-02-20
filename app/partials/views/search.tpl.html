@@ -1,9 +1,9 @@
-<view id="navigation-search" title="'Suche'" hide-back-button="true" left-buttons="leftButtons" right-buttons="rightButtons">
-	<content start-y="55" has-header="false" padding="false" on-infinite-scroll="searchMoreMedia" overflow-scroll="false">
-    <div class="bar bar-header item-input-inset">
+<ion-view id="navigation-search" title="'Suche'" hide-back-button="true" left-buttons="leftButtons" right-buttons="rightButtons">
+	<ion-content start-y="55" has-header="false" padding="false" on-infinite-scroll="searchMoreMedia" overflow-scroll="false">
+    <div class="bar bar-header item-input-inset" style="margin-top: 3px;">
       <div class="item-input-wrapper">
         <i class="icon ion-ios7-search placeholder-icon"></i>
-        <input type="search" placeholder="Search" ng-model="data.searchField">
+        <pf-search-box></pf-search-box>
         <i class="clear-search icon ion-ios7-close-empty"></i>
       </div>
       <button pf-tick class="button button-clear icon ion-arrow-right-c" ng-click="searchMedia()"></button>
@@ -11,7 +11,7 @@
 
     <pf-media media="data.media" consume-medium="consumeMedium" display="display"></pf-media>
     <div ng-if="data.media.length > 0">
-		  <infinite-scroll></infinite-scroll>
+		  <ion-infinite-scroll></ion-infinite-scroll>
     </div>
-	</content>
-</view>
+	</ion-content>
+</ion-view>
