@@ -6,12 +6,5 @@ angular.module('newsApp.directives')
 			restrict: 'AE',
 			replace: true,
 			templateUrl: 'partials/directives/media.tpl.html',
-			/*scope: {
-				media: '=',
-				consumeMedium: '=',
-				display: '='
-			},*/
-			link: function(){
-			}
 		};
 	});

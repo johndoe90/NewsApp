@@ -5,7 +5,7 @@
 				<div style="position: relative;">
 					<a ng-click="addFavourite(medium)">
 					<img bo-src="medium.imageMedium"></a>
-					<span bo-html="medium.mediaProvider.mediaProviderName"></span>
+					<span bo-html="medium.mediaProvider.domain.replace('http://', '').replace('https://', '').replace('www.', '')"></span>
 				</div>
 			</div>
 

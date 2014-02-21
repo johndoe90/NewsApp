@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('newsApp.controllers')
-	.controller('MediaCtrl', ['$scope', '$ionicModal', 'Media', 'Settings', function($scope, $ionicModal, Media, Settings){
+	.controller('MediaCtrl', ['$scope', '$ionicModal', 'Media', 'Settings', 'Cordova', function($scope, $ionicModal, Media, Settings, Cordova){
 		$scope.modalViewVisible = false;
 		$scope.primaryViewVisible = false;
 		$scope.url = 'http://10.0.0.38:8080/scoop';
@@ -9,7 +9,7 @@ angular.module('newsApp.controllers')
 		$scope.data = {
 			end: false,
 			media: [],
-			quantity: 10,
+			quantity: 25,
 			categories: [],
 			mediaProviders: []
 		};
@@ -24,7 +24,7 @@ angular.module('newsApp.controllers')
 
 		$scope.appendMedia = function(params){
 			return Media.fetch(params).then(function(media){
-				if(media.length === 0){
+				if(media.length === 0 || media.length < $scope.data.quantity){
 					$scope.data.end = true;
 				}
 
@@ -76,10 +76,12 @@ angular.module('newsApp.controllers')
 		};
 
 		$scope.openModalView = function(){
+			Cordova.preventSleep();
 			$scope.modal.show();
 		};
 
 		$scope.closeModalView = function(){
+			Cordova.allowSleep();
 			$scope.modal.hide();
 		};
 	}]);

@@ -6,12 +6,20 @@ module.exports = [
         "clobbers": [
             "navigator.splashscreen"
         ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.insomnia/www/Insomnia.js",
+        "id": "nl.x-services.plugins.insomnia.WebViewColor",
+        "clobbers": [
+            "window.plugins.insomnia"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "org.apache.cordova.splashscreen": "0.2.5"
+    "org.apache.cordova.splashscreen": "0.2.5",
+    "nl.x-services.plugins.insomnia": "3.0"
 }
 // BOTTOM OF METADATA
 });

@@ -1,18 +1,18 @@
-<ion-view title="'EditFilter'" left-buttons="leftButtons">
+<ion-view title="'SETTINGS_EDIT_FILTER_TITLE' | translate" left-buttons="leftButtons" hide-back-button="true">
 	<ion-content has-header="true" padding="true">		 
 		<ul class="list">
-			<li class="item item-divider">Name</li>
+			<li class="item item-divider" translate="SETTINGS_EDIT_FILTER_LIST_NAME"></li>
 			<li class="item item-input">
 				<input type="text" placeholder="Name" ng-model="data.thread.name" >
 			</li>
-			<li class="item item-divider">Quellen</li>
+			<li class="item item-divider" translate="SETTINGS_EDIT_FILTER_LIST_SOURCES"></li>
 			<li class="item item-checkbox" ng-repeat="mediaProvider in data.mediaProviders">
 				<label class="checkbox">
 					<input type="checkbox" ng-model="includeMediaProvider" ng-init="includeMediaProvider = (mediaProvider.id | in : data.thread.filter.mediaProviders)" ng-change="toggleMediaProvider($index)">
 				</label>
 				{{mediaProvider.mediaProviderName}} 
 			</li>
-			<li class="item item-divider">Kategorien</li>
+			<li class="item item-divider" translate="SETTINGS_EDIT_FILTER_LIST_CATEGORIES"></li>
 			<li class="item item-checkbox" ng-repeat="category in data.categories">
 				<div ng-class="'category-level-' + category.sort.split('.').length">
 					<label class="checkbox" ng-class="'category-level-' + category.sort.split('.').length">

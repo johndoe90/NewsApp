@@ -2,13 +2,21 @@
 
 angular
 	.module('newsApp.controllers')
-	.controller('SettingsCtrl', ['$scope','$ionicActionSheet', '$ionicModal', 'Threads', 'Cordova', 'MediaProviders', 'Categories', 'Settings', '$state', function($scope, $ionicActionSheet, $ionicModal, Threads, Cordova, MediaProviders, Categories, Settings, $state){
+	.controller('SettingsCtrl', ['$scope','$ionicActionSheet', '$ionicModal', 'Threads', 'Cordova', 'MediaProviders', 'Categories', 'Settings', '$state', '$translate', function($scope, $ionicActionSheet, $ionicModal, Threads, Cordova, MediaProviders, Categories, Settings, $state, $translate){
 		$scope.data = {};
 		$scope.data.thread = {};
 		$scope.data.categoryCheckboxes = [];
 		$scope.data.threads = Settings.settings.threads;
 		$scope.data.categories = Categories.categories;
 		$scope.data.mediaProviders = MediaProviders.mediaProviders;
+
+		$scope.changeLanguage = function(key){
+			$translate.uses(key);
+		};
+
+		$scope.restoreDefaultSettings = function(){
+
+		};
 
 		$scope.addThread = function(){
 			$scope.data.threads.push({
@@ -27,12 +35,12 @@ angular
 		$scope.showFilterActionSheet = function(threadIndex){
 			$ionicActionSheet.show({
 				buttons: [
-					{ text: 'edit' },
-					{ text: 'move up' },
-					{ text: 'move down' }
+					{ text: $translate('SETTINGS_EDIT_FILTER_ACTION_SHEET_EDIT') },
+					{ text: $translate('SETTINGS_EDIT_FILTER_ACTION_SHEET_MOVE_UP') },
+					{ text: $translate('SETTINGS_EDIT_FILTER_ACTION_SHEET_MOVE_DOWN') }
 				],
-				cancelText: 'cancel',
-				destructiveText: 'delete',
+				cancelText: $translate('SETTINGS_EDIT_FILTER_ACTION_SHEET_CANCEL'),
+				destructiveText: $translate('SETTINGS_EDIT_FILTER_ACTION_SHEET_REMOVE'),
 
 				cancel: function(){
 					Cordova.tick();
@@ -43,12 +51,10 @@ angular
 					var temp;
 					switch(buttonIndex){
 						case 0:
-							Cordova.tick();
 							$scope.data.thread = $scope.data.threads[threadIndex];
 							$state.go('app.settings.editFilter', {index: threadIndex});
 							return true;
 						case 1:
-							Cordova.tick();
 							if(threadIndex > 0){
 								temp = $scope.data.threads[threadIndex - 1];
 								$scope.data.threads[threadIndex - 1] = $scope.data.threads[threadIndex];
@@ -59,7 +65,6 @@ angular
 							
 							return false;
 						case 2:
-							Cordova.tick();
 							if(threadIndex < ($scope.data.threads.length - 1)){
 								temp = $scope.data.threads[threadIndex + 1];
 								$scope.data.threads[threadIndex + 1] = $scope.data.threads[threadIndex];

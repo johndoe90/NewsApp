@@ -21,12 +21,15 @@ angular
 		});
 
 		$scope.searchMedia = function(params){
-			console.log('search');
+			
 			params = angular.extend({
 				'q': $scope.data.searchField
 			}, params || {});
 
+			console.log('searchField: ' + $scope.data.searchField);
+
 			if($scope.data.searchField.length > 0){
+				console.log('search');
 				query = $scope.data.searchField;
 				$scope.data.media = [];
 				$scope.data.end = false;
@@ -35,7 +38,9 @@ angular
 		};
 
 		$scope.searchMoreMedia = function(done, arg2){
-			if(query && $scope.data.end === false){
+			
+			if(query && $scope.data.end === false && $scope.data.media.length > 0){
+				console.log('search more');
 				$scope.loadMoreMedia(done, arg2, {
 					'q': query,
 					'first': $scope.data.media.length > 0 ? $scope.data.media[$scope.data.media.length - 1].id : ''//$scope.data.media[$scope.data.media.length - 1].id || ''

@@ -2,7 +2,7 @@
 
 angular
 	.module('newsApp.directives')
-	.directive('pfPrimaryView', ['$window', function($window){
+	.directive('pfPrimaryView', ['$window', 'Cordova', function($window, Cordova){
 		return {
 			restrict: 'AE',
 			replace: true,
@@ -14,8 +14,10 @@ angular
 			link: function($scope, $element){
 				var isVisible = function(){
 					if($element.is(':visible')){
+						Cordova.preventSleep();
 						$scope.primaryViewVisible = true;
 					}else{
+						Cordova.allowSleep();
 						$scope.primaryViewVisible = false;
 					}
 				};

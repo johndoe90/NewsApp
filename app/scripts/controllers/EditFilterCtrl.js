@@ -2,11 +2,12 @@
 
 angular
 	.module('newsApp.controllers')
-	.controller('EditFilterCtrl', ['$scope', '$stateParams', 'Categories', 'MediaProviders', function($scope, $stateParams, Categories, MediaProviders){
+	.controller('EditFilterCtrl', ['$scope', '$stateParams', 'Categories', 'MediaProviders', 'Cordova', function($scope, $stateParams, Categories, MediaProviders, Cordova){
 		//not needed right away but takes some methods from SettingsCtrl and put them here
 		$scope.data.thread = $scope.data.threads[parseInt($stateParams.index)];
 
 		$scope.toggleMediaProvider = function(mediaProviderIndex){
+			Cordova.tick();
 			var mediaProviderId = MediaProviders.mediaProviders[mediaProviderIndex].id;
 			var indexOf = $scope.data.thread.filter.mediaProviders.indexOf(mediaProviderId);
 			if(indexOf === -1){
@@ -47,6 +48,7 @@ angular
 		};
 
 		$scope.toggleCategory = function(categoryIndex){
+			Cordova.tick();
 			var parent = Categories.categories[categoryIndex];
 			var children = Categories.children(parent.id);
 			var indexOf = $scope.data.thread.filter.categories.indexOf(parent.id);

@@ -18,5 +18,17 @@ angular
 			}
 		};
 
+		cordova.preventSleep = function(){
+			if(isPresent){
+				$window.plugins.insomnia.keepAwake();
+			}
+		};
+
+		cordova.allowSleep = function(){
+			if(isPresent){
+				$window.plugins.insomnia.allowSleepAgain();
+			}
+		};
+
 		return cordova;
 	}]);

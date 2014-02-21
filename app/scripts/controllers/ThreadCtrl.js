@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('newsApp.controllers')
-	.controller('ThreadCtrl', ['$scope', '$state', '$stateParams', 'Cordova', 'Settings', function($scope, $state, $stateParams, Cordova, Settings){
+	.controller('ThreadCtrl', ['$scope', '$state', '$stateParams', 'Cordova', 'Settings', '$timeout', function($scope, $state, $stateParams, Cordova, Settings, $timeout){
 		var threadIndex = parseInt($stateParams.index);
 		$scope.data.end = false;
 		$scope.data.name = Settings.settings.threads[threadIndex].name;
@@ -36,16 +36,22 @@ angular.module('newsApp.controllers')
 		{
 			type: 'button-icon icon ion-chevron-left',
 			tap: function(){
+				$scope.$emit('startLoading');
 				Cordova.tick();
-				$scope.goToPrevThread();
+				$timeout(function(){
+					$scope.goToPrevThread();
+				}, 50);
 			}
 		}];
 
 		$scope.rightButtons = [{
 			type: 'button-icon icon ion-chevron-right',
 			tap: function(){
+				$scope.$emit('startLoading');
 				Cordova.tick();
-				$scope.goToNextThread();
+				$timeout(function(){
+					$scope.goToNextThread();
+				}, 50);
 			}
 		}];
 

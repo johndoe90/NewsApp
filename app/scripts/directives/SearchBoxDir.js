@@ -8,9 +8,20 @@ angular.module('newsApp.directives')
 			templateUrl: 'partials/directives/searchBox.tpl.html',
 			link: function($scope, $element){
 				$element.on('keydown', function(event){
+					/*$scope.$apply(function(){
+						$scope.data.searchField = $element.val();
+						if(event.keyCode === 13){
+							$scope.searchMedia();
+							$element.blur();
+						}
+					});*/
+
 					if(event.keyCode === 13){
-						$scope.searchMedia();
-						$element.blur();
+						$scope.$apply(function(){
+							$element.blur();
+							$scope.searchMedia();
+							//$element.blur();
+						});
 					}
 				});
 			}
