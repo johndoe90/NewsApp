@@ -4,7 +4,7 @@ angular.module('newsApp.controllers')
 	.controller('MediaCtrl', ['$scope', '$ionicModal', 'Media', 'Settings', 'Cordova', function($scope, $ionicModal, Media, Settings, Cordova){
 		$scope.modalViewVisible = false;
 		$scope.primaryViewVisible = false;
-		$scope.url = 'http://10.0.0.38:8080/scoop';
+		$scope.url = 'http://aqueous-hollows-5032.herokuapp.com';
 
 		$scope.data = {
 			end: false,

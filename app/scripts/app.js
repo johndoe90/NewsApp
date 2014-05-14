@@ -8,13 +8,13 @@ angular.module('newsApp.filters', []);
 
 angular.module('newsApp.services', [])
 	.constant('MEDIA_PROVIDER_REPO_CONFIG', {
-		url: 'http://10.0.0.38:8080/scoop/mediaProviders'
+		url: 'http://aqueous-hollows-5032.herokuapp.com//mediaProviders' //http://quiet-fjord-1432.herokuapp.com
 	})
 	.constant('CATEGORY_REPO_CONFIG', {
-		url: 'http://10.0.0.38:8080/scoop/categories'
+		url: 'http://aqueous-hollows-5032.herokuapp.com/categories'
 	})
 	.constant('MEDIA_REPO_CONFIG', {
-		url: 'http://10.0.0.38:8080/scoop/media'
+		url: 'http://aqueous-hollows-5032.herokuapp.com/media'
 	});
 
 angular.module('newsApp', ['newsApp.services', 'newsApp.controllers', 'newsApp.directives', 'newsApp.filters', 'ionic','ngSanitize', 'pasvaz.bindonce', 'pascalprecht.translate'])
